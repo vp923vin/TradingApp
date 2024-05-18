@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../Config/db'); 
 
-const OTPManage = sequelize.define('OTPManage', {
+const HelpAndSupport = sequelize.define('HelpAndSupport', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -15,28 +15,29 @@ const OTPManage = sequelize.define('OTPManage', {
       key: 'id'
     }
   },
-  email_otp: {
-    type: DataTypes.STRING,
+  ticket_id: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
+    unique: true
+  },
+  query_detail: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  query_status: {
+    type: DataTypes.ENUM('pending', 'in_progress', 'resolved', 'closed', 'escalated'),
+    defaultValue: 'pending'
+  },
+  priority: {
+    type: DataTypes.ENUM('low', 'medium', 'high'),
+    defaultValue: 'medium'
+  },
+  assigned_to: {
+    type: DataTypes.STRING(100),
     allowNull: true
   },
-  mobile_otp: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  password_otp: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  login_otp: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  bank_otp: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
-  payment_otp: {
-    type: DataTypes.STRING,
+  resolution: {
+    type: DataTypes.TEXT,
     allowNull: true
   },
   created_at: {
@@ -50,8 +51,8 @@ const OTPManage = sequelize.define('OTPManage', {
     allowNull: false
   }
 }, {
-  tableName: 'otp_manage',
+  tableName: 'help_support',
   timestamps: false 
 });
 
-module.exports = OTPManage;
+module.exports = HelpAndSupport;
