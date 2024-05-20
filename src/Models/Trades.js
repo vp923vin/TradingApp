@@ -9,7 +9,8 @@ const Trades = sequelize.define('trades', {
   },
   uid: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    
   },
   trade_id: {
     type: DataTypes.STRING,

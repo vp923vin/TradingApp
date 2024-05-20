@@ -1,6 +1,7 @@
 const sequelize = require('../../Config/db');
 const User = require('../../Models/Users');
 const UserBankDetails = require('../../Models/UserBankDetails');
+const UserDocsVerify = require('../../Models/UserDocsVerify');
 const APIStatus = require('../../Models/ApiStatus');
 const Contact = require('../../Models/Contact');
 const HelpAndSupport = require('../../Models/HelpAndSupport');

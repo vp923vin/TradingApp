@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const syncDatabase = require('./src/Queries/Sync/Sync');``
-const insertDummyData = require('./src/Queries/Insert/User');
+const syncDatabase = require('./src/Queries/Sync/sync');
+// const insertDummyData = require('./src/Queries/Insert/User');
 require('./src/Config/db');
 
 const { port, appName, url, environment } = require('./src/Config/app');
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(port, () => {
+app.listen(port, async () => {
     // await syncDatabase();
     // insertDummyData();
     console.log(`Server is started at port ${port} and browser uri is ${url}:${port},

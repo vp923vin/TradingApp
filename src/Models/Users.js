@@ -47,7 +47,7 @@ const User = sequelize.define('User', {
   },
   wallet_pin: {
     type: DataTypes.STRING(4),
-    allowNull: false
+    allowNull: true
   }
 }, {
   tableName: 'users' 
