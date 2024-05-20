@@ -11,6 +11,7 @@ const SocketStatus = require('../../Models/SocketStatus');
 const StockList = require('../../Models/StockList');
 const Trades = require('../../Models/Trades');
 const TradeCharges = require('../../Models/TradeCharges');
+const TradeHistory = require('../../Models/TradeHistory');
 
 
 const syncDatabase = async () => {

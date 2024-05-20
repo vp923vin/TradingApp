@@ -1,7 +1,5 @@
-// models/TradeCharges.js
-
 const { DataTypes } = require('sequelize');
-const sequelize = require('../Config/db');
+const sequelize = require('../Config/db'); 
 const Trades = require('./Trades'); 
 const Users = require('./Users'); 
 
@@ -22,22 +20,25 @@ const TradeCharges = sequelize.define('trade_charges', {
   },
   uid: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true, 
     references: {
-      model: Users,
+      model: 'users',
       key: 'id'
-    }
+    },
+    // onDelete: 'SET NULL',
+    // onUpdate: 'CASCADE'
   },
   default_brokerage: {
     type: DataTypes.DECIMAL(10, 2),
-    allowNull: false
+    allowNull: true
   },
   set_brokerage: {
     type: DataTypes.DECIMAL(10, 2),
-    allowNull: false
+    allowNull: true
   },
-  other_charges: {
-    type: DataTypes.DECIMAL(10, 2)
+  gst_28_percent: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: true
   },
   quantity: {
     type: DataTypes.INTEGER,
@@ -56,7 +57,8 @@ const TradeCharges = sequelize.define('trade_charges', {
   timestamps: false
 });
 
+
 TradeCharges.belongsTo(Trades, { foreignKey: 'trade_id', targetKey: 'trade_id' });
-TradeCharges.belongsTo(Users, { foreignKey: 'uid', targetKey: 'id' });
+// TradeCharges.belongsTo(Users, { foreignKey: 'uid', targetKey: 'id' });
 
 module.exports = TradeCharges;
